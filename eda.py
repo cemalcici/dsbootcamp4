@@ -66,6 +66,42 @@ def cat_summary(dataframe, col_name, plot=False):
 #############################################
 
 def num_summary(dataframe, numerical_col, plot=False):
+    """
+    Numerik değişkenlerin özet istatistiklerini gösterir.
+
+    Parameters
+    ----------
+    dataframe: pd.DataFrame
+        İncelenecek veri seti
+    numerical_col: str
+        Veri seti içerisindeki numerik değişken ismi.
+    plot: bool {True, False}
+        Değişkenin görselleştirmesini sağlar. Varsayılan değeri False'tur.
+
+    Examples
+    -------
+    >>> import seaborn as sns
+    >>> df = sns.load_dataset("tips")
+    >>> num_summary(df, "tip")
+    count    244.000000
+    mean       2.998279
+    std        1.383638
+    min        1.000000
+    5%         1.440000
+    10%        1.500000
+    20%        2.000000
+    30%        2.000000
+    40%        2.476000
+    50%        2.900000
+    60%        3.016000
+    70%        3.480000
+    80%        4.000000
+    90%        5.000000
+    95%        5.195500
+    99%        7.214500
+    max       10.000000
+    Name: tip, dtype: float64
+    """
     quantiles = [0.05, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 0.95, 0.99]
     print(dataframe[numerical_col].describe(quantiles).T)
 
